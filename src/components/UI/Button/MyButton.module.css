@@ -1,0 +1,17 @@
+.MyBtn {
+    padding: 5px 15px;
+    color: teal;
+    font-size: 14px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background: transparent;
+    border: 1px solid teal;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.MyBtn:hover {
+    opacity: 1.0;
+    box-shadow: 0 0 2px teal;
+    transition: opacity;
+    transition-duration: 300ms;
+}
