@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function PostItem (props) {
     const {id, title, body} = props.post;
-    const postID = (postID) => postID
+    
 
     return (
         <div className="post">
@@ -16,8 +16,8 @@ function PostItem (props) {
             </div>
             <div className="post__btns">
                 <Button onClick={() => props.remove(props.post)}>Delete</Button>
-                <Button onClick={(e) => postID(e.target.id)}>
-                    <Link to={postID}>Open</Link>
+                <Button onClick={(e) => console.log(e.target)}>
+                    <Link to={`/posts/${id}`}>Open</Link>
                 </Button>
             </div>
         </div>
