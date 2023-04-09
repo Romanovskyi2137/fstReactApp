@@ -1,10 +1,10 @@
 import React from "react";
-import About from "../pages/About";
-import Posts from "../pages/Posts";
+import About from "../pages/About.jsx";
+import Posts from "../pages/Posts.jsx";
 import { Route, Routes } from "react-router-dom";
-import StartPage from "../pages/StartPage";
-import PostPage from "../pages/PostPage";
-
+import StartPage from "../pages/StartPage.jsx";
+import PostPage from "../pages/PostPage.jsx";
+import { router } from "../router/router.js";
 
 
 function AppRouter () {
@@ -12,13 +12,16 @@ function AppRouter () {
 
     return (
         <Routes>
-            <Route path="/" element={<StartPage/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/posts" element={<Posts/>}/>
-            <Route path="/posts/:postID" element={<PostPage/>}/>
+            {router.map((route) => {
+                return (
+                    <Route 
+                        path={route.path} 
+                        element={route.element} 
+                        exact={route.exact}
+                    />)
+            })}
         </Routes>
     )
 }
 
 export default AppRouter
-

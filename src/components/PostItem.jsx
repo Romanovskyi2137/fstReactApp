@@ -16,7 +16,7 @@ function PostItem (props) {
             </div>
             <div className="post__btns">
                 <Button onClick={() => props.remove(props.post)}>Delete</Button>
-                <Button onClick={(e) => console.log(e.target)}>
+                <Button>
                     <Link to={`/posts/${id}`}>Open</Link>
                 </Button>
             </div>
