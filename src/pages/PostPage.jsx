@@ -39,9 +39,8 @@ function PostPage () {
                             ? <Loader/>
                             : <div>
                                 {comments.map(com =>
-                                    <div style={{marginTop: "5px"}}>
+                                    <div style={{marginTop: "5px"}} key={com.id}>
                                         <h5>{com.email}</h5>
-                                        <h5>{com.name}</h5>
                                         <p>{com.body}</p>
                                     </div>
                                 )}

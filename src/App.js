@@ -21,14 +21,23 @@ import About from './pages/About.jsx';
 import Posts from './pages/Posts.jsx';
 import Navbar from './components/UI/Navbar/Navbar.jsx';
 import AppRouter from './components/AppRouter.jsx';
+import { AuthContext } from './context/index.js';
 
 
 function App() {  
+  const [isAuth, setIsAuth] = useState(false);
+
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <AppRouter/>
-    </BrowserRouter>
+    <AuthContext.Provider value={{
+      isAuth,
+      setIsAuth
+    }}>
+      <BrowserRouter>
+        <Navbar/>
+        <AppRouter/>
+      </BrowserRouter>
+    </AuthContext.Provider>
+ 
   )
 }
 

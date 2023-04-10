@@ -5,13 +5,16 @@ import PostPage from "../pages/PostPage.jsx";
 import Login from "../pages/Login.jsx";
 
 export const privateRoutes = [
-    {path: "/", element: <StartPage/>, exact: true},
-    {path: "/about" , element: <About/>, exact: true},
-    {path: "/posts", element: <Posts/>, exact: true},
-    {path: "/posts/:postID", element: <PostPage/>, exact: true},
+    {path: "/", element: <StartPage/>},
+    {path: "/about" , element: <About/>},
+    {path: "/posts", element: <Posts/>},
+    {path: "/posts/:postID", element: <PostPage/>},
+    {path:"*", element: <StartPage/>},
 ];
 
 export const publicRoutes = [
-    {path: "/login" , element: <Login/>, exact: true},
-    {path: "/about" , element: <About/>, exact: true},
+    {path: "/", element: <StartPage/>},
+    {path: "/login" , element: <Login/>},
+    {path: "/about" , element: <About/>},
+    {path:"*", element: <StartPage/>},
 ]
