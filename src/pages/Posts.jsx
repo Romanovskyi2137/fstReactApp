@@ -16,10 +16,11 @@ import Loader from '../components/UI/Loader/Loader.jsx';
 import useFetching from '../myHooks/useFetching.js';
 import { getPageCount, getPagesArray } from '../utils/pages.js';
 import Pagination from '../components/Pagination.jsx';
+import { useObserver } from '../myHooks/useObserver.js';
 
 
 function Posts() {  
-  const [posts1, setPosts1] = useState([]);
+    const [posts1, setPosts1] = useState([]);
 
     const [filter, setFilter] = useState({sort: "", query: ""});
 
@@ -32,25 +33,31 @@ function Posts() {
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page) => {
       const response = await PostService.getAll(limit, page);
-      setPosts1(response.data);
+      setPosts1([...posts1, ...response.data]);
 
       const totalCount = response.headers['x-total-count']
       setTotalPages(getPageCount(totalCount, limit))
     });
 
-    let pagesArray = getPagesArray(totalPages)
+    let pagesArray = getPagesArray(totalPages);
 
     const sortedAndSearchedPosts = usePosts(posts1, filter.sort, filter.query);
+    
+    const lastElement = useRef();
 
+    useObserver(lastElement, page < totalPages, isPostsLoading, () => {
+      setPage(page + 1)
+    })
+    
     useEffect(() => {
       fetchPosts(limit, page)
-    }, []);
+    }, [page]);
 
 
     const changePage = (page) => {
       setPage(page);
       fetchPosts(limit, page)
-    }
+    };
 
     function createPost (newPost) {
       setPosts1([...posts1, newPost]);
@@ -59,7 +66,7 @@ function Posts() {
     
     function removePost (post) {
       setPosts1(posts1.filter(p => p.id !== post.id))
-    }
+    };
 
 
   return (
@@ -68,7 +75,7 @@ function Posts() {
       <Modal 
         visible={modal}
         setVisible={setModal}
-        >
+      >
         <PostForm create={createPost}/>
       </Modal>
 
@@ -78,15 +85,18 @@ function Posts() {
         filter={filter}
         setFilter={setFilter}
       /> 
-      {postError && <h1>Error: ${postError}</h1>
+      {postError && <h1>Error: ${postError}</h1>}
 
-      }
-      {isPostsLoading
-        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
-          <Loader></Loader>
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} title={"Post list"}/> 
+
+      {isPostsLoading && 
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
+            <Loader/>
           </div>
-        : <PostList remove={removePost} posts={sortedAndSearchedPosts} title={"Post list"}/> 
       }  
+
+      <div ref={lastElement} style={{height: "25px"}}/>
+
       <Pagination page={page} changePage={changePage} totalPages={totalPages}/>
 
     </div>

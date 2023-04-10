@@ -9,7 +9,8 @@ function Login () {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        setIsAuth(true)
+        setIsAuth(true);
+        localStorage.setItem('auth', "true");
     }
 
 

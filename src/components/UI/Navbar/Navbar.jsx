@@ -7,7 +7,8 @@ import { AuthContext } from "../../../context";
 function Navbar () {
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const onLogoutClick = (e) => {
-        setIsAuth(false)
+        setIsAuth(false);
+        localStorage.removeItem('auth')
     }
 
     return (

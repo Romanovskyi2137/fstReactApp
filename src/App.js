@@ -26,6 +26,11 @@ import { AuthContext } from './context/index.js';
 
 function App() {  
   const [isAuth, setIsAuth] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem('auth')){
+      setIsAuth(true);
+    }
+  }, [])
 
   return (
     <AuthContext.Provider value={{
