@@ -5,7 +5,7 @@ import PostPage from "../pages/PostPage.jsx";
 import Login from "../pages/Login.jsx";
 
 export const privateRoutes = [
-    {path: "/", element: <StartPage/>},
+    {path: "/", element: <newPage/>},
     {path: "/about" , element: <About/>},
     {path: "/posts", element: <Posts/>},
     {path: "/posts/:postID", element: <PostPage/>},

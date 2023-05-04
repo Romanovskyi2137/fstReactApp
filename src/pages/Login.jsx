@@ -17,7 +17,7 @@ function Login () {
     return (
         <div>
             <h1>Login page</h1>
-            <form onClick={onFormSubmit}>
+            <form onSubmit={onFormSubmit}>
                 <Input type="text" placeholder="login"/>
                 <Input type="password" placeholder="password"/>
                 <MyButton>Login</MyButton>

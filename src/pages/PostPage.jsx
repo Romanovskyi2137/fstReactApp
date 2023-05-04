@@ -24,7 +24,7 @@ function PostPage () {
     return (
         <div>
             {isLoading
-                ? <Loader/>
+                ? <Loader style={{margin: "25px 0"}}/>
                 : <div>
                     <h1>Post {post.id}, page.</h1>
                     <div className="post__title">
@@ -36,7 +36,7 @@ function PostPage () {
                     <div>
                         <h2>Comments</h2>
                         {isComLoading
-                            ? <Loader/>
+                            ? <Loader style={{marginTop: "30px"}}/>
                             : <div>
                                 {comments.map(com =>
                                     <div style={{marginTop: "5px"}} key={com.id}>
