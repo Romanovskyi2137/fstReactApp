@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fstReactApp/static/css/main.f04110c0.css",
+    "main.js": "/fstReactApp/static/js/main.b1214a9f.js",
+    "index.html": "/fstReactApp/index.html",
+    "main.f04110c0.css.map": "/fstReactApp/static/css/main.f04110c0.css.map",
+    "main.b1214a9f.js.map": "/fstReactApp/static/js/main.b1214a9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f04110c0.css",
+    "static/js/main.b1214a9f.js"
+  ]
+}
